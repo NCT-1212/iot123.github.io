@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP8266 Control</title>
+</head>
+<body>
+  <h1>ESP8266 Control</h1>
+  <button id="buttonA">Button A</button>
+  <div id="status"></div>
+  <script>
+    document.getElementById("buttonA").addEventListener("click", function(){
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "toggleA.php", true);
+      xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status == 200){
+          document.getElementById("status").innerHTML = xhr.responseText;
+        }
+      }
+      xhr.send();
+    });
+  </script>
+</body>
+</html>
